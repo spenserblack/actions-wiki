@@ -1,4 +1,4 @@
-name: Wiki Action
+name: Wiki Update
 description: Sync your wiki to files in your repository
 branding:
   icon: book
