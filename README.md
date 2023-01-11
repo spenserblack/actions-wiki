@@ -17,3 +17,10 @@ rm -rf .github/wiki/.git
 git add .github/wiki
 git commit -m "Add wiki to repo"
 ```
+
+## Usage
+
+Unfortunately, `${{ github.token }}` does not have access to updating wiki
+repositories, so it is necessary to create a new PAT.
+
+Simple example usage can be found in [this workflow file](./.github/workflows/update-wiki.yml).
