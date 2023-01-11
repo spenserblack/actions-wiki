@@ -1,0 +1,48 @@
+name: Wiki Action
+description: Sync your wiki to files in your repository
+branding:
+  icon: book
+  color: blue
+inputs:
+  repository:
+    description: The repository housing the wiki
+    required: true
+    default: github.com/${{ github.repository }}
+  token:
+    description: The token to use when cloning and pushing wiki changes
+    required: true
+    default: ${{ github.token }}
+  wiki-directory:
+    description: The directory to use for your wiki contents
+    required: true
+    default: .github/wiki
+  commit-message:
+    description: The message to use when committing to the wiki
+    required: true
+    default: Update wiki ${{ github.sha }}
+runs:
+  using: composite
+  steps:
+    - name: Set up wiki repository
+      shell: bash
+      working-directory: ${{ inputs.wiki-directory }}
+      run: |
+        git init
+        git config --local user.name github-actions
+        git config --local user.email github-actions@github.com
+        git remote add origin https://${{ inputs.token }}@${{ inputs.repository }}.wiki.git
+        git fetch origin
+        git reset origin/master
+    - name: Commit and push wiki changes
+      shell: bash
+      working-directory: ${{ inputs.wiki-directory }}
+
+      run: |
+        git add --all
+        git commit -m "${{ inputs.commit-message }}"
+        git push -u origin master
+    - name: Cleanup
+      shell: bash
+      working-directory: ${{ inputs.wiki-directory }}
+      run: rm -rf ./.git
+
