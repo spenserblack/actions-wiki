@@ -18,6 +18,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      # NOTE: @main so I can dogfood the latest version, but you'll probably want to use a tag
+      # See https://github.com/spenserblack/actions-wiki/tags
       - uses: spenserblack/actions-wiki@main
         with:
           token: ${{ secrets.WIKI_TOKEN }}
