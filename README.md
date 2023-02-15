@@ -23,4 +23,8 @@ git commit -m "Add wiki to repo"
 Unfortunately, `${{ github.token }}` does not have access to updating wiki
 repositories, so it is necessary to create a new PAT.
 
+Start by creating a classic token. If your repository is public, you only need the
+`public_repo` scope. Otherwise, you must grant the full `repo` scope. Then, add
+the token to your repository secrets so that it can be used in your workflow.
+
 Simple example usage can be found in [this workflow file](./.github/workflows/update-wiki.yml).
