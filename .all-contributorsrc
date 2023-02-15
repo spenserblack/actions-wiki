@@ -1,0 +1,11 @@
+{
+  "projectName": "actions-wiki",
+  "projectOwner": "spenserblack",
+  "files": [
+    "CREDITS.md"
+  ],
+  "commitConvention": "atom",
+  "contributorsSortAlphabetically": true,
+  "contributors": [],
+  "contributorsPerLine": 7
+}
