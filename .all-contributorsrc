@@ -6,6 +6,16 @@
   ],
   "commitConvention": "atom",
   "contributorsSortAlphabetically": true,
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "quazar-omega",
+      "name": "QuazarOmega",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56311398?v=4",
+      "profile": "https://github.com/quazar-omega",
+      "contributions": [
+        "userTesting"
+      ]
+    }
+  ],
   "contributorsPerLine": 7
 }
