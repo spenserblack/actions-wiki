@@ -15,6 +15,15 @@
       "contributions": [
         "userTesting"
       ]
+    },
+    {
+      "login": "jcbhmr",
+      "name": "Jacob Hummer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61068799?v=4",
+      "profile": "http://jcbhmr.me",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
