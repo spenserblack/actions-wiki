@@ -28,3 +28,32 @@ Start by creating a classic token. If your repository is public, you only need t
 the token to your repository secrets so that it can be used in your workflow.
 
 Simple example usage can be found in [this workflow file](./.github/workflows/update-wiki.yml).
+
+## Alternatives
+
+There are numerous GitHub wiki publishing actions on the GitHub Actions
+marketplace. There are, however, two that stick out. The
+[newrelic/wiki-sync-action] is a good choice for a GitHub wiki action if you
+need bidirectional synchronization when someone edits the live wiki. This can be
+beneficial for non-technical contributors. There's also
+[Andrew-Chen-Wang/github-wiki-action] which is a direct competitor to this
+project. The tradeoff that it makes is using a Docker image which may not work
+with Windows-based jobs.
+
+> My single goal was to expose the wiki to PRs, so that people who aren't
+> collaborators can contribute to the wiki and go through a review process. Bad
+> things can happen when the wiki is directly editable by everyone 😆 I don't
+> really have any plans to make this bi-directional.
+
+&mdash; [@spenserblack] in [Issue #4]
+
+For more information about other alternatives, you can check out [Issue #4]
+which has a longer list of alternatives. ⚠️ Be warned that most have been
+abandoned.
+
+<!-- prettier-ignore-start -->
+[newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
+[Andrew-Chen-Wang/github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
+[@spenserblack]: https://github.com/spenserblack
+[Issue #4]: https://github.com/spenserblack/actions-wiki/issues/4
+<!-- prettier-ignore-end -->
