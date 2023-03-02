@@ -46,8 +46,7 @@ which is a direct competitor to this project. The tradeoff that it makes is usin
 Docker image which may not work with Windows-based jobs.
 
 For more information about other alternatives, you can check out [Issue #4][issue-4]
-which has a longer list of alternatives. ⚠️ Be warned that most have been
-abandoned.
+which has a longer list of alternatives.
 
 [newrelic-wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
 [andrew-chen-wang-github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
