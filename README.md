@@ -1,53 +1,109 @@
-# Wiki
+# Publish to GitHub wiki action
 
-This action takes the contents of a provided directory and synchronizes it with your
-repository's wiki. This allows, for example, pull requests for the wiki.
+📖 Deploy docs from your source tree to the GitHub wiki
 
-The goal is to expose the wiki to PRs, so that potential contributors who aren't
-collaborators can contribute to the wiki and go through a review process. Alternatively,
-one can disabled the "Restrict editing to collaborators only" setting for their wiki,
-but this allows the community to make unreviewed, potentially unwanted, changes.
+<div align="center">
 
-By default, it will use the `.github/wiki` directory.
+![](https://placekitten.com/600/400)
 
-## Before using this action
+<!-- prettier-ignore -->
+[Awesome GitHub wikis](https://github.com/MyHoneyBadger/awesome-github-wiki#readme)
+| [🆕 What's new in v1](#tbd)
+| [GitHub workflow permissions docs](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
 
-You probably want to commit your wiki in its initial state before using this action.
-This is because this action will commit *all* differences between the wiki and the
-`.github/wiki` (or other specified directory) contents.
+</div>
 
-```bash
-git clone https://github.com/octocat/my-repo.wiki.git .github/wiki
-rm -rf .github/wiki/.git
-git add .github/wiki
-git commit -m "Add wiki to repo"
-```
+🌐 Works across repositories (with a [PAT]) \
+📚 Pretty interface for Markdown docs \
+⤴️ Lets you open PRs for wiki docs
 
 ## Usage
 
-Unfortunately, `${{ github.token }}` does not have access to updating wiki
-repositories, so it is necessary to create a new PAT.
+❗ Make sure you turn on the GitHub wiki feature in your repo's settings menu.
+You'll also need to _manually_ create a dummy page to initialize the git repo
+that powers the GitHub wiki. If you don't, when we push to `your-repo.wiki.git`,
+your workflow will fail because the wiki doesn't exist.
 
-Start by creating a classic token. If your repository is public, you only need the
-`public_repo` scope. Otherwise, you must grant the full `repo` scope. Then, add
-the token to your repository secrets so that it can be used in your workflow.
+Create a workflow file named something like `.github/workflows/wiki.yml` and add
+a job that uses this action to it!
 
-Simple example usage can be found in [this workflow file](./.github/workflows/update-wiki.yml).
+```yml
+name: Wiki
+on:
+  push:
+    branches: [main]
+    paths: [wiki/**, .github/workflows/wiki.yml]
+concurrency:
+  group: wiki
+  cancel-in-progress: true
+permissions:
+  content: write
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: spenserblack/actions-wiki@v0.1.1
+```
+
+⚠️ Make sure you enable the `content: write` permission! GitHub recently
+[changed the default permissions granted to jobs] for new repositories.
+
+☁️ If you're pushing to a wiki that's **not the current repository** you'll need
+to get a [GitHub PAT] to push to it.
+
+### Options
+
+<!--
+Prettier doesn't format inline HTML. See #8480 on GitHub Issues. [1] Instead,
+You'll need to either wrap this in an ```html code block to abuse the formatter
+and then remove the ```html wrapper, or paste it into the online Prettier
+playground [2] and copy the result.
+
+[1]: https://github.com/prettier/prettier/issues/8480
+[2]: https://prettier.io/playground/
+-->
+
+<dl>
+  <dt><code>repository</code></dt>
+  <dd>
+    <b>Default:</b> <code>github.com/${{ github.repository }}</code><br />
+    The repository housing the wiki
+  </dd>
+  <dt><code>token</code></dt>
+  <dd>
+    <b>Default:</b> <code>${{ github.token }}</code><br />
+    The token to use when cloning and pushing wiki changes
+  </dd>
+  <dt><code>wiki-directory</code></dt>
+  <dd>
+    <b>Default:</b> <code>.github/wiki</code><br />
+    The directory to use for your wiki contents
+  </dd>
+  <dt><code>commit-message</code></dt>
+  <dd>
+    <b>Default:</b> <code>Update wiki ${{ github.sha }}</code><br />
+    The message to use when committing to the wiki
+  </dd>
+</dl>
 
 ## Alternatives
 
-There are numerous GitHub wiki publishing actions on the GitHub Actions
-marketplace. There are, however, two that stick out. The
-[newrelic/wiki-sync-action][newrelic-wiki-sync-action] is a good choice for a
-GitHub wiki action if you need bidirectional synchronization when someone edits
-the live wiki. This can be beneficial for non-technical contributors. There's also
-[Andrew-Chen-Wang/github-wiki-action][andrew-chen-wang-github-wiki-action]
-which is a direct competitor to this project. The tradeoff that it makes is using a
-Docker image which may not work with Windows-based jobs.
+There are quite a few GitHub wiki publishing actions on the [GitHub Actions
+marketplace]. There are, however, two that stick out. The
+[newrelic/wiki-sync-action] is a good choice for if you need bidirectional
+synchronization when someone edits the live wiki. This can be beneficial for
+less-technical contributors. There's also [Andrew-Chen-Wang/github-wiki-action]
+which is a direct competitor to this project. Specifically, it offers more
+automagic ✨ features in exchange for more complexity.
 
-For more information about other alternatives, you can check out [Issue #4][issue-4]
-which has a longer list of alternatives.
+📚 If you're interested in more discussion of alternatives, check out [#4].
 
-[newrelic-wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
-[andrew-chen-wang-github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
-[issue-4]: https://github.com/spenserblack/actions-wiki/issues/4
+<!-- prettier-ignore-start -->
+[newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
+[Andrew-Chen-Wang/github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
+[#4]: https://github.com/spenserblack/actions-wiki/issues/4
+[PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[GitHub PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[changed the default permissions granted to jobs]: https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
+<!-- prettier-ignore-end -->
