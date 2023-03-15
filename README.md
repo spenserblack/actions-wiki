@@ -34,11 +34,11 @@ Create a workflow file named something like `.github/workflows/wiki.yml` and add
 a job that uses this action to it! 🎉
 
 ```yml
-name: Wiki
+name: Publish wiki
 on:
   push:
     branches: [main]
-    paths: [wiki/**, .github/workflows/wiki.yml]
+    paths: [wiki/**, .github/workflows/publish-wiki.yml]
 concurrency:
   group: wiki
   cancel-in-progress: true
