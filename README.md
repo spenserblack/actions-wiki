@@ -43,7 +43,7 @@ concurrency:
   group: wiki
   cancel-in-progress: true
 permissions:
-  content: write
+  contents: write
 jobs:
   wiki:
     runs-on: ubuntu-latest
