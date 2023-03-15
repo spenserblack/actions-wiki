@@ -24,6 +24,12 @@ You'll also need to _manually_ create a dummy page to initialize the git repo
 that powers the GitHub wiki. If you don't, when we push to `your-repo.wiki.git`,
 your workflow will fail because the wiki doesn't exist.
 
+<div align="center">
+
+![](https://user-images.githubusercontent.com/61068799/225441831-d3587ceb-0462-4591-bf00-ee56b040fe00.png)
+
+</div>
+
 Create a workflow file named something like `.github/workflows/wiki.yml` and add
 a job that uses this action to it!
 
