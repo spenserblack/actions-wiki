@@ -31,7 +31,7 @@ your workflow will fail because the wiki doesn't exist.
 </div>
 
 Create a workflow file named something like `.github/workflows/wiki.yml` and add
-a job that uses this action to it!
+a job that uses this action to it! 🎉
 
 ```yml
 name: Wiki
