@@ -2,6 +2,8 @@
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
+## Features
+
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
 ⤴️ Lets you open PRs for wiki docs
