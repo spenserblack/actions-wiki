@@ -51,38 +51,20 @@ to get a [GitHub PAT] to push to it.
 
 ### Options
 
-<!--
-Prettier doesn't format inline HTML. See #8480 on GitHub Issues. [1] Instead,
-You'll need to either wrap this in an ```html code block to abuse the formatter
-and then remove the ```html wrapper, or paste it into the online Prettier
-playground [2] and copy the result.
+- **`repository`:** The repository housing the wiki. Use this if you're
+  publishing to a wiki that's not the current repository. You _can include a
+  domain prefix_ if you have a hosted GitHub instance that you want to push to.
+  Default is `${{ github.repository }}` with the implicit `github.com` domain.
 
-[1]: https://github.com/prettier/prettier/issues/8480
-[2]: https://prettier.io/playground/
--->
+- **`token`:** `${{ github.token }}` is the default. This token is used when
+  cloning and pushing wiki changes.
 
-<dl>
-  <dt><code>repository</code></dt>
-  <dd>
-    <b>Default:</b> <code>github.com/${{ github.repository }}</code><br />
-    The repository housing the wiki
-  </dd>
-  <dt><code>token</code></dt>
-  <dd>
-    <b>Default:</b> <code>${{ github.token }}</code><br />
-    The token to use when cloning and pushing wiki changes
-  </dd>
-  <dt><code>wiki-directory</code></dt>
-  <dd>
-    <b>Default:</b> <code>.github/wiki</code><br />
-    The directory to use for your wiki contents
-  </dd>
-  <dt><code>commit-message</code></dt>
-  <dd>
-    <b>Default:</b> <code>Update wiki ${{ github.sha }}</code><br />
-    The message to use when committing to the wiki
-  </dd>
-</dl>
+- **`wiki-directory`:** The directory to use for your wiki contents. Default:
+  `.github/wiki`.
+
+- **`commit-message`:** The message to use when committing new content. Default
+  is `Update wiki ${{ github.sha }}`. You probably don't need to change this,
+  since this only applies if you look _really closely_ in your wiki.
 
 ## Alternatives
 
