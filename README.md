@@ -10,19 +10,11 @@
 
 ## Usage
 
-❗ Make sure you turn on the GitHub wiki feature in your repo's settings menu.
-You'll also need to _manually_ create a dummy page to initialize the git repo
-that powers the GitHub wiki. If you don't, when we push to `your-repo.wiki.git`,
-your workflow will fail because the wiki doesn't exist.
-
-<div align="center">
-
-![](https://user-images.githubusercontent.com/61068799/225441831-d3587ceb-0462-4591-bf00-ee56b040fe00.png)
-
-</div>
-
-Create a workflow file named something like `.github/workflows/wiki.yml` and add
-a job that uses this action to it! 🎉
+Then, create a GitHub Actions workflow file like
+`.github/workflows/publish-wiki.yml` with a
+`- uses: spenserblack/actions-wiki@v0.1.1` step. This example uses the
+`on: push` even (with some filters) to update the GitHub wiki whenever any
+changes are made to the in-source `wiki/` folder.
 
 ```yml
 name: Publish wiki
@@ -41,13 +33,46 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: spenserblack/actions-wiki@v0.1.1
+        with:
+          # Whatever directory you choose will be mirrored to the GitHub
+          # .wiki.git. The default is .github/wiki.
+          wiki-directory: wiki
+          # For now, you'll need to manually specify a GitHub token until we
+          # solve #2. The x: prefix is a dummy username.
+          token: x:${{ secrets.GITHUB_TOKEN }}
 ```
 
-⚠️ Make sure you enable the `content: write` permission! GitHub recently
-[changed the default permissions granted to jobs] for new repositories.
+<img align="right" alt="Screenshot of 'Create the first page' button" src="https://i.imgur.com/ABKIS4h.png" />
 
-☁️ If you're pushing to a wiki that's **not the current repository** you'll need
-to get a [GitHub PAT] to push to it.
+❗ Make sure you turn on the GitHub wiki feature in your repo's settings menu.
+You'll also need to _manually_ create a dummy page to initialize the git repo
+that powers the GitHub wiki. If you don't, when we push to `your-repo.wiki.git`,
+your workflow will fail because the wiki doesn't exist.
+
+⚠️ You'll need to remember to enable the `contents: write` permission! GitHub
+recently [changed the default permissions granted to jobs] for new repositories.
+
+### Publishing to a different repository
+
+If you're pushing to a wiki that's **not the current repository** you'll need to
+get a [GitHub PAT] to push to it. The default `${{ secrets.GITHUB_TOKEN }}`
+won't cut it! You can [generate a PAT] in your GitHub Settings.
+
+For example, if you created spenserblack/gigantic-mega-project-wiki to hold the
+wiki and you want to publish it to the GitHub wiki that belongs to _another
+repository_ like spenserblack/gigantic-mega-project, you'd use a step like this
+in one of your GitHub Actions workflows.
+
+```yml
+- uses: spenserblack/actions-wiki@v0.1.1
+  with:
+    wiki-directory: .
+    # Notice that we use a github.com/ prefix here to support enterprise GitHub
+    # deployments on other domains.
+    repository: github.com/spenserblak/gigantic-mega-project
+    # Make sure this token has the appropriate push permissions!
+    token: x:${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
+```
 
 ### Options
 
@@ -85,4 +110,6 @@ automagic ✨ features in exchange for more complexity.
 [PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 [GitHub PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 [changed the default permissions granted to jobs]: https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
+[github actions marketplace]: https://github.com/marketplace?type=actions
+[generate a pat]: https://github.com/settings/tokens?type=beta
 <!-- prettier-ignore-end -->
