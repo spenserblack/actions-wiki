@@ -2,17 +2,6 @@
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
-<div align="center">
-
-![](https://placekitten.com/600/400)
-
-<!-- prettier-ignore -->
-[Awesome GitHub wikis](https://github.com/MyHoneyBadger/awesome-github-wiki#readme)
-| [🆕 What's new in v1](#tbd)
-| [GitHub workflow permissions docs](https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs)
-
-</div>
-
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
 ⤴️ Lets you open PRs for wiki docs
