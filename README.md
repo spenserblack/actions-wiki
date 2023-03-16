@@ -10,6 +10,9 @@
 
 ## Usage
 
+![GitHub Actions](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub+Actions&color=2088FF&logo=GitHub+Actions&logoColor=FFFFFF&label=)
+![GitHub wiki](https://img.shields.io/static/v1?style=for-the-badge&message=GitHub+wiki&color=181717&logo=GitHub&logoColor=FFFFFF&label=)
+
 Then, create a GitHub Actions workflow file like
 `.github/workflows/publish-wiki.yml` with a
 `- uses: spenserblack/actions-wiki@v0.1.1` step. This example uses the
