@@ -59,10 +59,10 @@ If you're pushing to a wiki that's **not the current repository** you'll need to
 get a [GitHub PAT] to push to it. The default `${{ secrets.GITHUB_TOKEN }}`
 won't cut it! You can [generate a PAT] in your GitHub Settings.
 
-For example, if you created spenserblack/gigantic-mega-project-wiki to hold the
-wiki and you want to publish it to the GitHub wiki that belongs to _another
-repository_ like spenserblack/gigantic-mega-project, you'd use a step like this
-in one of your GitHub Actions workflows.
+For example, if you created octocat/gigantic-mega-project-wiki to hold the wiki
+and you want to publish it to the GitHub wiki that belongs to _another
+repository_ like octocat/gigantic-mega-project, you'd use a step like this in
+one of your GitHub Actions workflows.
 
 ```yml
 - uses: spenserblack/actions-wiki@v0.1.1
@@ -70,7 +70,7 @@ in one of your GitHub Actions workflows.
     wiki-directory: .
     # Notice that we use a github.com/ prefix here to support enterprise GitHub
     # deployments on other domains.
-    repository: github.com/spenserblak/gigantic-mega-project
+    repository: github.com/octocat/gigantic-mega-project
     # Make sure this token has the appropriate push permissions!
     token: x:${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
 ```
