@@ -6,7 +6,8 @@
 
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
-⤴️ Lets you open PRs for wiki docs
+⤴️ Lets you open PRs for wiki docs \
+💻 Supports `runs-on: windows-*`
 
 ## Usage
 
@@ -99,8 +100,9 @@ marketplace]. There are, however, two that stick out. The
 [newrelic/wiki-sync-action] is a good choice for if you need bidirectional
 synchronization when someone edits the live wiki. This can be beneficial for
 less-technical contributors. There's also [Andrew-Chen-Wang/github-wiki-action]
-which is a direct competitor to this project. Specifically, it offers more
-automagic ✨ features in exchange for more complexity.
+which is a direct competitor to this project. It offers more automatic features,
+but has more complex configuration. It also [doesn't support `runs-on:
+windows-*`].
 
 📚 If you're interested in more discussion of alternatives, check out [#4].
 
@@ -113,4 +115,5 @@ automagic ✨ features in exchange for more complexity.
 [changed the default permissions granted to jobs]: https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
 [github actions marketplace]: https://github.com/marketplace?type=actions
 [generate a pat]: https://github.com/settings/tokens?type=beta
+[doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
 <!-- prettier-ignore-end -->
