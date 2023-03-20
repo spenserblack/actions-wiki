@@ -5,19 +5,29 @@ branding:
   color: blue
 inputs:
   repository:
-    description: The repository housing the wiki. Use this if you're publishing to a wiki that's not the current repository. You can include a domain prefix if you have a hosted GitHub instance that you want to push to. Default is ${{ github.repository }} with the implicit github.com domain.
+    description:
+      The repository housing the wiki. Use this if you're publishing to a wiki
+      that's not the current repository. You can include a domain prefix if you
+      have a hosted GitHub instance that you want to push to. Default is ${{
+      github.repository }} with the implicit github.com domain.
     required: true
     default: github.com/${{ github.repository }}
   token:
-    description: ${{ github.token }} is the default. This token is used when cloning and pushing wiki changes.
+    description:
+      ${{ github.token }} is the default. This token is used when cloning and
+      pushing wiki changes.
     required: true
     default: ${{ github.token }}
   wiki-directory:
-    description: The directory to use for your wiki contents. Default: .github/wiki.
+    description:
+      The directory to use for your wiki contents. Default .github/wiki.
     required: true
     default: .github/wiki
   commit-message:
-    description: The message to use when committing new content. Default is Update wiki ${{ github.sha }}. You probably don't need to change this, since this only applies if you look really closely in your wiki.
+    description:
+      The message to use when committing new content. Default is Update wiki ${{
+      github.sha }}. You probably don't need to change this, since this only
+      applies if you look really closely in your wiki.
     required: true
     default: Update wiki ${{ github.sha }}
 runs:
@@ -45,4 +55,3 @@ runs:
       shell: bash
       working-directory: ${{ inputs.wiki-directory }}
       run: rm -rf ./.git
-
