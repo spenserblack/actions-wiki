@@ -1,3 +1,8 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base"
+  "image": "mcr.microsoft.com/devcontainers/base",
+  "customizations": {
+    "vscode": {
+      "extensions": ["lizebang.bash-extension-pack"]
+    }
+  }
 }
