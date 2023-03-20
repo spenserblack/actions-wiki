@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+source git_exists.sh
+
+if ! git_exists "https://$INPUTS_TOKEN@$INPUTS_REPOSITORY.wiki.git"; then
+  echo "$(basename $0): https://$INPUTS_REPOSITORY.wiki.git doesn't exist. Did" >&2
+  echo "                you remember to create the first wiki page manually?" >&2
+  exit 1
+fi
+
 cd "$INPUTS_WIKI_DIRECTORY"
 
 git init
