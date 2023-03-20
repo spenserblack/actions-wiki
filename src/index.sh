@@ -3,7 +3,7 @@ set -e
 
 source "$(dirname "${BASH_SOURCE[0]}")/git_exists.sh"
 
-if ! git_exists "https://$INPUTS_TOKEN@$INPUTS_REPOSITORY.wiki.git"; then
+if ! git_exists "https://$INPUTS_TOKEN@$INPUTS_REPOSITORY.wiki.git" &>/dev/null; then
   echo "$(basename "$0"): https://$INPUTS_REPOSITORY.wiki.git doesn't exist." >&2
   echo "Did you remember to create the first wiki page manually?" >&2
   exit 1
