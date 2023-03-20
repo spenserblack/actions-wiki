@@ -7,7 +7,7 @@ git_exists() (
     echo "$1"
  		return 0
 	else
-    echo "$(basename $0): $1 is not a Git repository" >&2
+    echo "$(basename "$0"): $1 is not a Git repository" >&2
  		return 1
   fi
 )
