@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source git_exists.sh
+source "$(dirname "${BASH_SOURCE[0]}")/git_exists.sh"
 
 if ! git_exists "https://$INPUTS_TOKEN@$INPUTS_REPOSITORY.wiki.git"; then
   echo "$(basename $0): https://$INPUTS_REPOSITORY.wiki.git doesn't exist. Did" >&2
