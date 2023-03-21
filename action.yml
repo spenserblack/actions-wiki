@@ -1,4 +1,4 @@
-name: Publish to GitHub wiki action
+name: Wiki Update
 description: 📖 Deploy docs from your source tree to the GitHub wiki
 branding:
   icon: book
