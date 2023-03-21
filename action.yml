@@ -23,26 +23,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Set up wiki repository
+    - id: index
+      run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
       shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-      run: |
-        git init
-        git config --local user.name github-actions
-        git config --local user.email github-actions@github.com
-        git remote add origin https://${{ inputs.token }}@${{ inputs.repository }}.wiki.git
-        git fetch origin
-        git reset origin/master
-    - name: Commit and push wiki changes
-      shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-
-      run: |
-        git add --all
-        git commit -m "${{ inputs.commit-message }}"
-        git push -u origin master
-    - name: Cleanup
-      shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-      run: rm -rf ./.git
-
+      env:
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_WIKI_DIRECTORY: ${{ inputs.wiki-directory }}
+        INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
