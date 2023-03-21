@@ -1,0 +1,19 @@
+name: Test
+on:
+  push:
+    branches: [main]
+    paths: [src/**, action.yml, .github/wiki/**, .github/workflows/test.yml]
+  pull_request:
+    branches: [main]
+    paths: [src/**, action.yml, .github/wiki/**, .github/workflows/test.yml]
+concurrency: test-${{ github.ref }}
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          token: x:${{ secrets.GITHUB_TOKEN }}
