@@ -106,6 +106,15 @@ windows-*`].
 
 📚 If you're interested in more discussion of alternatives, check out [#4].
 
+## Development
+
+![Codespaces](https://img.shields.io/static/v1?style=for-the-badge&message=Codespaces&color=181717&logo=GitHub&logoColor=FFFFFF&label=)
+
+This project uses a devcontainer config to outline the development environment.
+To get started, create a GitHub Codespace on your fork of this repository. If
+you want to contribute your changes back to this repository, you can follow our
+handy [contributing guide]. Happy coding! 👋
+
 <!-- prettier-ignore-start -->
 [newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
 [Andrew-Chen-Wang/github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
@@ -116,4 +125,5 @@ windows-*`].
 [github actions marketplace]: https://github.com/marketplace?type=actions
 [generate a pat]: https://github.com/settings/tokens?type=beta
 [doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
+[contributing guide]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
 <!-- prettier-ignore-end -->
