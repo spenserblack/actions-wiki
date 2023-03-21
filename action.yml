@@ -27,7 +27,7 @@ runs:
       run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
       shell: bash
       env:
-        INPUTS_REPOSITORY: ${{ inputs.repository }}
-        INPUTS_TOKEN: ${{ inputs.token }}
-        INPUTS_WIKI_DIRECTORY: ${{ inputs.wiki-directory }}
-        INPUTS_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_WIKI_DIRECTORY: ${{ inputs.wiki-directory }}
+        INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
