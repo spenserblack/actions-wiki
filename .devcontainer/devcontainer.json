@@ -1,0 +1,11 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "lizebang.bash-extension-pack",
+        "EditorConfig.EditorConfig"
+      ]
+    }
+  }
+}
