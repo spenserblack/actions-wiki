@@ -1,2 +1,5 @@
 action.yml linguist-detectable
+
+# This makes the #!/bin/bash behave correctly in weird situations like running a
+# /mnt/c/**.sh file from WSL.
 *.sh eol=lf
