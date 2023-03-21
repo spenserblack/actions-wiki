@@ -5,10 +5,10 @@ source "$(dirname "${BASH_SOURCE[0]}")/git_exists.sh"
 
 if ! git_exists "https://$INPUTS_TOKEN@$INPUTS_REPOSITORY.wiki.git" &>/dev/null; then
   echo "$(basename "$0"): https://$INPUTS_REPOSITORY.wiki.git doesn't exist." >&2
-  echo "Did you remember to create the first wiki page manually?" >&2
-  echo "You can find more information on the readme. [1]" >&2
+  echo 'Did you remember to create the first wiki page manually?' >&2
+  echo 'You can find more information on the readme. [1]' >&2
   echo
-  echo "[1]: https://github.com/spenserblack/actions-wiki#usage"
+  echo '[1]: https://github.com/spenserblack/actions-wiki#usage'
   exit 1
 fi
 
