@@ -10,7 +10,7 @@ on:
 # multiple at a given time) to still attempt to push to the wiki. This should
 # not cause any hiccups on the wiki since any and all tests are publishing in
 # the same content.
-concurrency: test-${{ github.ref }}
+concurrency: test
 permissions:
   contents: write
 jobs:
