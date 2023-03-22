@@ -23,7 +23,7 @@ git fetch origin
 git reset origin/master
 
 git add --all
-git commit -m "$INPUTS_COMMIT_MESSAGE"
+git commit -m "$INPUT_COMMIT_MESSAGE"
 git push -u origin master
 
 rm -rf ./.git
