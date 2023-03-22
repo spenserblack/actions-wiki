@@ -3,7 +3,7 @@
 git_exists() (
   set -e
 
-  if git ls-remote -h "$1" &>/dev/null;
+  if git ls-remote -h "$1" &>/dev/null; then
     echo "$1"
  		return 0
 	else
