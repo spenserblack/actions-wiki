@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# shellcheck source=src/git_exists.sh
 source "$(dirname "${BASH_SOURCE[0]}")/git_exists.sh"
 
 if ! git_exists "https://$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git" &>/dev/null; then
@@ -17,7 +18,7 @@ cd "$INPUT_WIKI_DIRECTORY"
 git init
 git config --local user.name github-actions
 git config --local user.email github-actions@github.com
-git remote add origin https://$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git
+git remote add origin "https://$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git"
 git fetch origin
 git reset origin/master
 
