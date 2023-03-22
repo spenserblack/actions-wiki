@@ -1,4 +1,4 @@
-#!/bin/bash
+# shellcheck shell=bash
 
 git_exists() (
   set -e
@@ -11,7 +11,3 @@ git_exists() (
  		return 1
   fi
 )
-
-if ! (return 0 2>/dev/null); then
-  git_exists "$@"
-fi
