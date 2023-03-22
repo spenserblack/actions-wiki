@@ -5,9 +5,9 @@ git_exists() (
 
   if git ls-remote -h "$1" &>/dev/null; then
     echo "$1"
- 		return 0
-	else
+    return 0
+  else
     echo "$(basename "$0"): $1 is not a Git repository" >&2
- 		return 1
+    return 1
   fi
 )
