@@ -1,7 +1,3 @@
-Welcome to the actions-wiki wiki!
+You're probably looking for [the project readme]. 😉
 
-This wiki should be written automatically by this action!
-
-You can create a classic token. You should add `public_repo`
-if your repository is public. Otherwise, you'll need to grant
-full control of private repositories.
+[the project readme]: https://github.com/spenserblack/actions-wiki#readme
