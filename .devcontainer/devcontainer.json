@@ -4,7 +4,8 @@
     "vscode": {
       "extensions": [
         "lizebang.bash-extension-pack",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "GitHub.vscode-github-actions"
       ]
     }
   },
