@@ -12,6 +12,11 @@ git reset origin/master
 
 git add --all
 git commit -m "$INPUT_COMMIT_MESSAGE"
-git push -u origin master
+
+if [[ $INPUT_DRY_RUN == true ]]; then
+  git remote show origin
+else
+  git push -u origin master
+fi
 
 rm -rf ./.git
