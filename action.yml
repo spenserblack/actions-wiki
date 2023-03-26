@@ -34,7 +34,7 @@ inputs:
     description: >-
       Whether or not to actually attempt to push changes back to the wiki
       itself. If this is set to true, we instead print the remote URL and do not
-      push to the remote wiki.
+      push to the remote wiki. The default is false. This is useful for testing.
     required: true
     default: false
 runs:
