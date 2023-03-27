@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd "$INPUT_WIKI_DIRECTORY"
+cd "$INPUT_PATH"
 
 git init
 git config --local user.name github-actions
