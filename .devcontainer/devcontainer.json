@@ -8,5 +8,7 @@
         "GitHub.vscode-github-actions"
       ]
     }
-  }
+  },
+  // https://webinstall.dev/
+  "postCreateCommand": "curl -sS https://webi.sh/shfmt | sh && curl -sS https://webi.sh/shellcheck | sh"
 }
