@@ -15,6 +15,7 @@ git commit -m "$INPUT_COMMIT_MESSAGE"
 
 if [[ $INPUT_DRY_RUN == true ]]; then
   git remote show origin
+  git show
 else
   git push -u origin master
 fi
