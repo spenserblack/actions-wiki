@@ -31,4 +31,4 @@ jobs:
           # For now, you'll need to manually specify a GitHub token until we
           # solve #2. The x: prefix is a dummy username.
           token: x:${{ secrets.GITHUB_TOKEN }}
-          dry-run: true
+          dry-run: ${{ github.ref != 'main' }}
