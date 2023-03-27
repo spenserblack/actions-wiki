@@ -18,7 +18,7 @@ inputs:
       wiki changes.
     required: true
     default: ${{ github.token }}
-  wiki-directory:
+  path:
     description: >-
       The directory to use for your wiki contents. Default .github/wiki.
     required: true
@@ -39,5 +39,5 @@ runs:
       env:
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_TOKEN: ${{ inputs.token }}
-        INPUT_WIKI_DIRECTORY: ${{ inputs.wiki-directory }}
+        INPUT_PATH: ${{ inputs.path }}
         INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}

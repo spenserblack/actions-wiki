@@ -40,7 +40,7 @@ jobs:
         with:
           # Whatever directory you choose will be mirrored to the GitHub
           # .wiki.git. The default is .github/wiki.
-          wiki-directory: wiki
+          path: wiki
           # For now, you'll need to manually specify a GitHub token until we
           # solve #2. The x: prefix is a dummy username.
           token: x:${{ secrets.GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ one of your GitHub Actions workflows.
 ```yml
 - uses: spenserblack/actions-wiki@v0.1.1
   with:
-    wiki-directory: .
+    path: .
     # Notice that we use a github.com/ prefix here to support enterprise GitHub
     # deployments on other domains.
     repository: github.com/octocat/gigantic-mega-project
@@ -88,7 +88,7 @@ one of your GitHub Actions workflows.
 - **`token`:** `${{ github.token }}` is the default. This token is used when
   cloning and pushing wiki changes.
 
-- **`wiki-directory`:** The directory to use for your wiki contents. Default:
+- **`path`:** The directory to use for your wiki contents. Default:
   `.github/wiki`.
 
 - **`commit-message`:** The message to use when committing new content. Default

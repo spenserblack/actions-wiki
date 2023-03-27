@@ -13,7 +13,7 @@ if ! git_exists "https://$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git" &>/dev/null; t
   exit 1
 fi
 
-cd "$INPUT_WIKI_DIRECTORY"
+cd "$INPUT_PATH"
 
 git init
 git config --local user.name github-actions
