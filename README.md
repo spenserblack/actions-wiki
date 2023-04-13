@@ -116,7 +116,7 @@ windows-*`].
 ## Development
 
 ![YAML](https://img.shields.io/static/v1?style=for-the-badge&message=YAML&color=CB171E&logo=YAML&logoColor=FFFFFF&label=)
-![GNU Bash](https://img.shields.io/static/v1?style=for-the-badge&message=GNU+Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
+![Bash](https://img.shields.io/static/v1?style=for-the-badge&message=Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
 
 This is a GitHub Action, so we inevitably use YAML. Make sure you quote the
 right things! To get started editing, you can use [GitHub.dev] for simple
