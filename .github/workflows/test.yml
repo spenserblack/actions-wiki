@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Write Rev
-        run: 'git log -1 --format="%H" > .github/wiki/Rev.md'
+        run: 'git log -1 --format="%H" > wiki/Rev.md'
       - uses: ./
         with:
           # For now, you'll need to manually specify a GitHub token until we
