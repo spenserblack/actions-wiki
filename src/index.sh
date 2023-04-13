@@ -22,14 +22,21 @@ git remote add origin "https://$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git"
 git fetch origin
 git reset origin/master
 
+# https://stackoverflow.com/a/2659808
+if git diff-index --quiet HEAD --; then
+  echo 'No changes! Will not commit or push.'
+	rm -rf .git
+	exit 0
+fi
+
 git add --all
 git commit -m "$INPUT_COMMIT_MESSAGE"
 
 if [[ $INPUT_DRY_RUN == true ]]; then
-  git remote show origin
-  git show
+	git remote show origin
+	git show
 else
-  git push -u origin master
+	git push -u origin master
 fi
 
 rm -rf ./.git
