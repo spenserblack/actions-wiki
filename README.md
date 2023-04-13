@@ -115,12 +115,21 @@ windows-*`].
 
 ## Development
 
-![Codespaces](https://img.shields.io/static/v1?style=for-the-badge&message=Codespaces&color=181717&logo=GitHub&logoColor=FFFFFF&label=)
+![YAML](https://img.shields.io/static/v1?style=for-the-badge&message=YAML&color=CB171E&logo=YAML&logoColor=FFFFFF&label=)
+![GNU Bash](https://img.shields.io/static/v1?style=for-the-badge&message=GNU+Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
 
-This project uses a devcontainer config to outline the development environment.
-To get started, create a GitHub Codespace on your fork of this repository. If
-you want to contribute your changes back to this repository, you can follow our
-handy [contributing guide]. Happy coding! 👋
+This is a GitHub Action, so we inevitably use YAML. Make sure you quote the
+right things! To get started editing, you can use [GitHub.dev] for simple
+changes. For more complicated stuff, it's recommended to use [GitHub Codespaces]
+or a full environment. You can't run shellcheck on GitHub.dev yet!
+
+You can't really test the action locally. Or at least, we haven't defined a test
+script that you can run on your local machine. To test 🧪 the action, the
+current workflow is to open a PR and then have the [`test.yml`] workflow run a
+`dry-run: true` iteration to (hopefully) spot any flaws.
+
+To get a better handle on the contribution process, check out our handy
+[contributing guide]. Happy coding! 👋
 
 <!-- prettier-ignore-start -->
 [newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
@@ -133,4 +142,7 @@ handy [contributing guide]. Happy coding! 👋
 [generate a pat]: https://github.com/settings/tokens?type=beta
 [doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
 [contributing guide]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
+[github.dev]: https://github.com/github/dev#readme
+[github codespaces]: https://github.com/features/codespaces
+[`test.yml`]: https://github.com/spenserblack/actions-wiki/blob/main/.github/workflows/test.yml
 <!-- prettier-ignore-end -->
