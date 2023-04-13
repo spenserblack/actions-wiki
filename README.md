@@ -39,8 +39,8 @@ jobs:
       - uses: spenserblack/actions-wiki@v0.1.1
         with:
           # Whatever directory you choose will be mirrored to the GitHub
-          # .wiki.git. The default is .github/wiki.
-          path: wiki
+          # github.com/user/repo.wiki.git. The default is the root wiki/ folder.
+          path: docs/wiki
           # For now, you'll need to manually specify a GitHub token until we
           # solve #2. The x: prefix is a dummy username.
           token: x:${{ secrets.GITHUB_TOKEN }}
