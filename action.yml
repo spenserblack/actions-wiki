@@ -1,48 +1,51 @@
 name: Wiki Update
-description: Sync your wiki to files in your repository
+description: 📖 Deploy docs from your source tree to the GitHub wiki
 branding:
   icon: book
   color: blue
 inputs:
   repository:
-    description: The repository housing the wiki
+    description: >-
+      The repository housing the wiki. Use this if you're publishing to a wiki
+      that's not the current repository. You can include a domain prefix if you
+      have a hosted GitHub instance that you want to push to. Default is
+      github.repository with the implicit github.com domain.
     required: true
     default: github.com/${{ github.repository }}
   token:
-    description: The token to use when cloning and pushing wiki changes
+    description: >-
+      github.token is the default. This token is used when cloning and pushing
+      wiki changes.
     required: true
     default: ${{ github.token }}
-  wiki-directory:
-    description: The directory to use for your wiki contents
+  path:
+    description: >-
+      The directory to use for your wiki contents. Default .github/wiki.
     required: true
     default: .github/wiki
   commit-message:
-    description: The message to use when committing to the wiki
+    description: >-
+      The message to use when committing new content. Default is Update wiki
+      github.sha. You probably don't need to change this, since this only
+      applies if you look really closely in your wiki.
     required: true
     default: Update wiki ${{ github.sha }}
+  dry-run:
+    description: >-
+      Whether or not to actually attempt to push changes back to the wiki
+      itself. If this is set to true, we instead print the remote URL and do not
+      push to the remote wiki. The default is false. This is useful for testing.
+    required: true
+    default: false
 runs:
   using: composite
   steps:
-    - name: Set up wiki repository
+    - id: index
+      run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
       shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-      run: |
-        git init
-        git config --local user.name github-actions
-        git config --local user.email github-actions@github.com
-        git remote add origin https://${{ inputs.token }}@${{ inputs.repository }}.wiki.git
-        git fetch origin
-        git reset origin/master
-    - name: Commit and push wiki changes
-      shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-
-      run: |
-        git add --all
-        git commit -m "${{ inputs.commit-message }}"
-        git push -u origin master
-    - name: Cleanup
-      shell: bash
-      working-directory: ${{ inputs.wiki-directory }}
-      run: rm -rf ./.git
-
+      env:
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_PATH: ${{ inputs.path }}
+        INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        INPUT_DRY_RUN: ${{ inputs.dry-run }}
