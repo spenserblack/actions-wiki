@@ -24,7 +24,7 @@ git reset origin/master
 
 # https://stackoverflow.com/a/2659808
 if git diff-index --quiet HEAD --; then
-  echo 'No changes! Will not commit or push.'
+	echo 'No changes! Will not commit or push.'
 	rm -rf .git
 	exit 0
 fi
