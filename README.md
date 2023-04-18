@@ -118,15 +118,10 @@ windows-*`].
 ![YAML](https://img.shields.io/static/v1?style=for-the-badge&message=YAML&color=CB171E&logo=YAML&logoColor=FFFFFF&label=)
 ![Bash](https://img.shields.io/static/v1?style=for-the-badge&message=Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
 
-This is a GitHub Action, so we inevitably use YAML. Make sure you quote the
-right things! To get started editing, you can use [GitHub.dev] for simple
-changes. For more complicated stuff, it's recommended to use [GitHub Codespaces]
-or a full environment. You can't run shellcheck on GitHub.dev yet!
-
-You can't really test the action locally. Or at least, we haven't defined a test
-script that you can run on your local machine. To test 🧪 the action, the
-current workflow is to open a PR and then have the [`test.yml`] workflow run a
-`dry-run: true` iteration to (hopefully) spot any flaws.
+This is a GitHub Action, so we inevitably use YAML[^1]. Make sure you quote the
+right things! To test 🧪 the action, the current workflow is to open a PR and
+then have the [`test.yml`] workflow run a `dry-run: true` iteration to
+(hopefully) spot any flaws.
 
 To get a better handle on the contribution process, check out our handy
 [contributing guide]. Happy coding! 👋
@@ -142,7 +137,6 @@ To get a better handle on the contribution process, check out our handy
 [generate a pat]: https://github.com/settings/tokens?type=beta
 [doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
 [contributing guide]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
-[github.dev]: https://github.com/github/dev#readme
-[github codespaces]: https://github.com/features/codespaces
 [`test.yml`]: https://github.com/spenserblack/actions-wiki/blob/main/.github/workflows/test.yml
+[^1]: https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/
 <!-- prettier-ignore-end -->
