@@ -18,6 +18,13 @@ report 🐛, a feature request 💡, or a Pull Request 🚀.
 6. 🧪 Let the tests run to make sure everything works
 7. 🚀 Profit!
 
+🚀 For a seamless coding experience, we recommend using VS Code or GitHub
+Codespaces as your editor! With VS Code's extensions and customizable settings,
+you can tailor your environment to suit your preferences. 🌟 Plus, for GitHub
+Codespaces users, we provide a .devcontainer/devcontainer.json config for a
+ready-to-use development environment. 🛠️ Enhance your coding productivity and
+enjoyment with these powerful editors! 😊
+
 <!-- prettier-ignore-start -->
 [open an issue]: https://github.com/spenserblack/actions-wiki/issues/new
 [open a Q&A discussion]: https://github.com/spenserblack/actions-wiki/discussions/new?category=q-a
