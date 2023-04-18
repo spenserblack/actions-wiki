@@ -25,8 +25,13 @@ Codespaces users, we provide a `devcontainer.json` config for a ready-to-use
 development environment. 🛠️ Enhance your coding productivity and enjoyment with
 these powerful editors! 😊
 
+We use [EditorConfig] to specify the spacing and file conventions for this
+project. Make sure you _try_ to conform with it. Editors like VS Code have
+extensions that will do this automatically for you! 😉
+
 <!-- prettier-ignore-start -->
 [open an issue]: https://github.com/spenserblack/actions-wiki/issues/new
 [open a Q&A discussion]: https://github.com/spenserblack/actions-wiki/discussions/new?category=q-a
 [open an idea discussion]: https://github.com/spenserblack/actions-wiki/discussions/new?category=ideas
+[editorconfig]: https://editorconfig.org/
 <!-- prettier-ignore-end -->
