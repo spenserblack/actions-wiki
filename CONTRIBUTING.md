@@ -21,9 +21,9 @@ report 🐛, a feature request 💡, or a Pull Request 🚀.
 🚀 For a seamless coding experience, we recommend using VS Code or GitHub
 Codespaces as your editor! With VS Code's extensions and customizable settings,
 you can tailor your environment to suit your preferences. 🌟 Plus, for GitHub
-Codespaces users, we provide a .devcontainer/devcontainer.json config for a
-ready-to-use development environment. 🛠️ Enhance your coding productivity and
-enjoyment with these powerful editors! 😊
+Codespaces users, we provide a `devcontainer.json` config for a ready-to-use
+development environment. 🛠️ Enhance your coding productivity and enjoyment with
+these powerful editors! 😊
 
 <!-- prettier-ignore-start -->
 [open an issue]: https://github.com/spenserblack/actions-wiki/issues/new
