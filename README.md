@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: spenserblack/actions-wiki@v0.1.1
+      - uses: spenserblack/actions-wiki@<version>
         with:
           # Whatever directory you choose will be mirrored to the GitHub
           # .wiki.git. The default is .github/wiki.
@@ -68,7 +68,7 @@ repository_ like octocat/gigantic-mega-project, you'd use a step like this in
 one of your GitHub Actions workflows.
 
 ```yml
-- uses: spenserblack/actions-wiki@v0.1.1
+- uses: spenserblack/actions-wiki@<version>
   with:
     path: .
     # Notice that we use a github.com/ prefix here to support enterprise GitHub
