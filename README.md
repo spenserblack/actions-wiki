@@ -4,7 +4,11 @@
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
-## Features
+<div align="center">
+
+![](https://user-images.githubusercontent.com/61068799/231881220-2915f956-dbdb-4eee-8807-4eba9537523f.png)
+
+</div>
 
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
