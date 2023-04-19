@@ -1,6 +1,6 @@
 # Publish to GitHub wiki action
 
-[![Test](https://github.com/jcbhmr/actions-wiki/actions/workflows/test.yml/badge.svg)](https://github.com/jcbhmr/actions-wiki/actions/workflows/test.yml)
+[![Test](https://github.com/spenserblack/actions-wiki/actions/workflows/test.yml/badge.svg)](https://github.com/spenserblack/actions-wiki/actions/workflows/test.yml)
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
