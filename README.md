@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: spenserblack/actions-wiki@v0.1.1
+      - uses: spenserblack/actions-wiki@<version>
         with:
           # Whatever directory you choose will be mirrored to the GitHub
           # github.com/user/repo.wiki.git. The default is the root wiki/ folder.
@@ -68,7 +68,7 @@ repository_ like octocat/gigantic-mega-project, you'd use a step like this in
 one of your GitHub Actions workflows.
 
 ```yml
-- uses: spenserblack/actions-wiki@v0.1.1
+- uses: spenserblack/actions-wiki@<version>
   with:
     path: .
     # Notice that we use a github.com/ prefix here to support enterprise GitHub
@@ -113,6 +113,19 @@ windows-*`].
 
 📚 If you're interested in more discussion of alternatives, check out [#4].
 
+## Development
+
+![YAML](https://img.shields.io/static/v1?style=for-the-badge&message=YAML&color=CB171E&logo=YAML&logoColor=FFFFFF&label=)
+![Bash](https://img.shields.io/static/v1?style=for-the-badge&message=Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
+
+This is a GitHub Action, so we inevitably use YAML[^1]. Make sure you quote the
+right things! To test 🧪 the action, the current workflow is to open a PR and
+then have the [`test.yml`] workflow run a `dry-run: true` iteration to
+(hopefully) spot any flaws.
+
+To get a better handle on the contribution process, check out our handy
+[contributing guide]. Happy coding! 👋
+
 <!-- prettier-ignore-start -->
 [newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
 [Andrew-Chen-Wang/github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
@@ -123,4 +136,7 @@ windows-*`].
 [github actions marketplace]: https://github.com/marketplace?type=actions
 [generate a pat]: https://github.com/settings/tokens?type=beta
 [doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
+[contributing guide]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
+[`test.yml`]: https://github.com/spenserblack/actions-wiki/blob/main/.github/workflows/test.yml
+[^1]: https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/
 <!-- prettier-ignore-end -->
