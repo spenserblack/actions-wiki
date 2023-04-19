@@ -1,5 +1,7 @@
 # Publish to GitHub wiki action
 
+[![Test](https://github.com/jcbhmr/actions-wiki/actions/workflows/test.yml/badge.svg)](https://github.com/jcbhmr/actions-wiki/actions/workflows/test.yml)
+
 📖 Deploy docs from your source tree to the GitHub wiki
 
 <div align="center">
@@ -11,8 +13,7 @@
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
 ⤴️ Lets you open PRs for wiki docs \
-💻 Supports `runs-on: windows-*` \
-🧪 <img valign="middle" src="https://github.com/spenserblack/actions-wiki/actions/workflows/test.yml/badge.svg" />
+💻 Supports `runs-on: windows-*`
 
 ## Usage
 
