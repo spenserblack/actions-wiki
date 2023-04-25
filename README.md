@@ -45,9 +45,6 @@ jobs:
           # Whatever directory you choose will be mirrored to the GitHub
           # .wiki.git. The default is .github/wiki.
           path: wiki
-          # For now, you'll need to manually specify a GitHub token until we
-          # solve #2. The x: prefix is a dummy username.
-          token: x:${{ secrets.GITHUB_TOKEN }}
 ```
 
 <img align="right" alt="Screenshot of 'Create the first page' button" src="https://i.imgur.com/ABKIS4h.png" />
@@ -79,7 +76,7 @@ one of your GitHub Actions workflows.
     # deployments on other domains.
     repository: github.com/octocat/gigantic-mega-project
     # Make sure this token has the appropriate push permissions!
-    token: x:${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
+    token: ${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
 ```
 
 ### Options
