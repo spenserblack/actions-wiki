@@ -7,11 +7,17 @@ inputs:
   repository:
     description: >-
       The repository housing the wiki. Use this if you're publishing to a wiki
-      that's not the current repository. You can include a domain prefix if you
-      have a hosted GitHub instance that you want to push to. Default is
-      github.repository with the implicit github.com domain.
+      that's not the current repository. You can change the GitHub server with
+      the github-server-url input. Default is github.repository.
     required: true
-    default: github.com/${{ github.repository }}
+    default: ${{ github.repository }}
+  github-server-url:
+    description: >-
+      An alternate https://github.com URL, usually for GitHub Enterprise
+      deployments under your own domain. Default is github.server_url (usually
+      https://github.com).
+    required: true
+    default: ${{ github.server_url }}
   token:
     description: >-
       github.token is the default. This token is used when cloning and pushing
@@ -45,6 +51,7 @@ runs:
       shell: bash
       env:
         INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_GITHUB_SERVER_URL: ${{ inputs.github-server-url }}
         INPUT_TOKEN: ${{ inputs.token }}
         INPUT_PATH: ${{ inputs.path }}
         INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
