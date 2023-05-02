@@ -72,9 +72,9 @@ one of your GitHub Actions workflows.
 - uses: spenserblack/actions-wiki@<version>
   with:
     path: .
-    # Notice that we use a github.com/ prefix here to support enterprise GitHub
-    # deployments on other domains.
-    repository: github.com/octocat/gigantic-mega-project
+    # This will push this repo (octocat/gigantic-mega-project-wiki) to the
+    # wiki of the octocat/gigantic-mega-project repository.
+    repository: octocat/gigantic-mega-project
     # Make sure this token has the appropriate push permissions!
     token: ${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
 ```
@@ -82,9 +82,13 @@ one of your GitHub Actions workflows.
 ### Options
 
 - **`repository`:** The repository housing the wiki. Use this if you're
-  publishing to a wiki that's not the current repository. You _can include a
-  domain prefix_ if you have a hosted GitHub instance that you want to push to.
-  Default is `${{ github.repository }}` with the implicit `github.com` domain.
+  publishing to a wiki that's not the current repository. You can change the
+  GitHub server with the `github-server-url:` input. Default is
+  `${{ github.repository }}`.
+
+- **`github-server-url`:** An alternate `https://github.com` URL, usually for
+  GitHub Enterprise deployments under your own domain. Default is
+  `${{ github.server_url }}` (usually `https://github.com`).
 
 - **`token`:** `${{ github.token }}` is the default. This token is used when
   cloning and pushing wiki changes.
