@@ -30,7 +30,4 @@ jobs:
         run: 'git log -1 --format="%H" > .github/wiki/Rev.md'
       - uses: ./
         with:
-          # For now, you'll need to manually specify a GitHub token until we
-          # solve #2. The x: prefix is a dummy username.
-          token: x:${{ secrets.GITHUB_TOKEN }}
           dry-run: ${{ github.ref != 'main' }}
