@@ -9,7 +9,7 @@ export GITHUB_REPOSITORY="$INPUT_REPOSITORY"
 
 # This is the default host that gh uses for clones and commands without a repo
 # context (a .git folder).
-export GH_HOST=$(echo "$GITHUB_SERVER_URL" | cut -d/ -f3)
+export GH_HOST="${GITHUB_SERVER_URL#*//}"
 
 gh auth setup-git
 
