@@ -8,11 +8,8 @@ export GITHUB_SERVER_URL="$INPUT_GITHUB_SERVER_URL"
 export GITHUB_REPOSITORY="$INPUT_REPOSITORY"
 
 # This is the default host that gh uses for clones and commands without a repo
-# context (a .git folder). Assuming $GITHUB_SERVER_URL is something like
-# "https://example.org" WITHOUT a trailing slash, then this will basically do:
-# github.server_url.replace(/^.*\//, "") to remove the "https://" part, leaving
-# just the host "example.org".
-export GH_HOST="${GITHUB_SERVER_URL#*/}"
+# context (a .git folder).
+export GH_HOST=$(echo "$GITHUB_SERVER_URL" | cut -d/ -f3)
 
 gh auth setup-git
 
