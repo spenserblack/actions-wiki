@@ -47,7 +47,7 @@ runs:
   using: composite
   steps:
     - id: index
-      run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
+      run: '"${GITHUB_ACTION_PATH%/}/index.sh"'
       shell: bash
       env:
         INPUT_REPOSITORY: ${{ inputs.repository }}
