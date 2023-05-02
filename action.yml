@@ -40,12 +40,20 @@ inputs:
 runs:
   using: composite
   steps:
-    - id: index
-      run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
+    - uses: actions/checkout@v3
+      with:
+        repository: ${{ inputs.repository }}.wiki
+        token: ${{ inputs.token }}
+        path: /tmp/wiki
+    - uses: GuillaumeFalourd/setup-rsync@v1.1
+    - run: rsync -a "${INPUT_PATH%/}/" /tmp/wiki/
       shell: bash
       env:
-        INPUT_REPOSITORY: ${{ inputs.repository }}
-        INPUT_TOKEN: ${{ inputs.token }}
         INPUT_PATH: ${{ inputs.path }}
-        INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
-        INPUT_DRY_RUN: ${{ inputs.dry-run }}
+    - if: inputs.dry-run == false
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        repository: /tmp/wiki
+        commit_message: ${{ inputs.commit-message }}
+    - run: rm -rf /tmp/wiki
+      shell: bash
