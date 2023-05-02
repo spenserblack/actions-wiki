@@ -1,6 +1,9 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base",
   "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md", "CONTRIBUTING.md"]
+    },
     "vscode": {
       "extensions": [
         "lizebang.bash-extension-pack",

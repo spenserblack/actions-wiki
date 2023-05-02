@@ -4,7 +4,11 @@
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
-## Features
+<div align="center">
+
+![](https://user-images.githubusercontent.com/61068799/231881220-2915f956-dbdb-4eee-8807-4eba9537523f.png)
+
+</div>
 
 🌐 Works across repositories (with a [PAT]) \
 📚 Pretty interface for Markdown docs \
@@ -41,9 +45,6 @@ jobs:
           # Whatever directory you choose will be mirrored to the GitHub
           # github.com/user/repo.wiki.git. The default is the root wiki/ folder.
           path: docs/wiki
-          # For now, you'll need to manually specify a GitHub token until we
-          # solve #2. The x: prefix is a dummy username.
-          token: x:${{ secrets.GITHUB_TOKEN }}
 ```
 
 <img align="right" alt="Screenshot of 'Create the first page' button" src="https://i.imgur.com/ABKIS4h.png" />
@@ -75,7 +76,7 @@ one of your GitHub Actions workflows.
     # deployments on other domains.
     repository: github.com/octocat/gigantic-mega-project
     # Make sure this token has the appropriate push permissions!
-    token: x:${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
+    token: ${{ secrets.GIGANTIC_MEGA_PROJECT_GITHUB_TOKEN }}
 ```
 
 ### Options
