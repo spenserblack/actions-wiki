@@ -15,18 +15,8 @@ gh auth setup-git
 
 cd "$INPUT_PATH"
 
-if ! gh repo clone "$GITHUB_REPOSITORY.wiki" .git -- --bare; then
-  echo "$(basename "$0"): $GITHUB_REPOSITORY.wiki doesn't exist." >&2
-  echo 'Did you remember to create the first wiki page manually?' >&2
-  echo 'You can find more information on the readme.' >&2
-  echo 'https://github.com/spenserblack/actions-wiki#usage' >&2
-  echo >&2
-  echo "\$GITHUB_SERVER_URL=$GITHUB_SERVER_URL" >&2
-  echo "\$GH_HOST=$GH_HOST" >&2
-  echo "\$GITHUB_REPOSITORY=$GITHUB_REPOSITORY" >&2
-  exit 1
-fi
 # https://stackoverflow.com/a/28180781
+gh repo clone "$GITHUB_REPOSITORY.wiki" .git -- --bare
 git config --unset core.bare
 git reset
 
