@@ -19,6 +19,7 @@ gh auth setup-git
 echo "🟪 Cloning $GITHUB_REPOSITORY.wiki into $INPUT_PATH..."
 cd "$INPUT_PATH"
 gh repo clone "$GITHUB_REPOSITORY.wiki" .git -- --bare
+trap 'rm -rf .git' SIGINT SIGTERM ERR EXIT
 git config --unset core.bare
 git reset
 echo "🟩 Cloned $GITHUB_REPOSITORY.wiki into $INPUT_PATH"
