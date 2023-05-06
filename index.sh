@@ -8,7 +8,8 @@ export GITHUB_SERVER_URL="$INPUT_GITHUB_SERVER_URL"
 export GITHUB_REPOSITORY="$INPUT_REPOSITORY"
 
 # This is the default host that gh uses for clones and commands without a repo
-# context (a .git folder).
+# context (a .git folder). We use Bash string magic to get the github.com part
+# from a full origin (no pathname) like https://github.com -> github.com
 export GH_HOST="${GITHUB_SERVER_URL#*//}"
 
 gh auth setup-git
