@@ -22,8 +22,8 @@ git remote add origin "https://$GITHUB_ACTOR:$INPUT_TOKEN@$INPUT_REPOSITORY.wiki
 git fetch origin
 git reset origin/master
 
-# https://stackoverflow.com/a/2659808
-if git diff-index --quiet HEAD --; then
+# https://stackoverflow.com/a/2658301
+if [[ $(git status --porcelain 2> /dev/null | tail -n1) == "" ]]; then
 	echo 'No changes! Will not commit or push.'
 	rm -rf .git
 	exit 0
