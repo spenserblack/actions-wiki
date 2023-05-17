@@ -96,6 +96,8 @@ one of your GitHub Actions workflows.
   is `Update wiki ${{ github.sha }}`. You probably don't need to change this,
   since this only applies if you look _really closely_ in your wiki.
 
+- **`branch` :** The branch which the wiki tacks on. Default `master`.
+
 - **`dry-run`:** Whether or not to actually attempt to push changes back to the
   wiki itself. If this is set to `true`, we instead print the remote URL and do
   not push to the remote wiki. The default is `false`. This is useful for
