@@ -30,6 +30,11 @@ inputs:
       applies if you look really closely in your wiki.
     required: true
     default: Update wiki ${{ github.sha }}
+  branch:
+    descripton: >-
+      The branch which the wiki tacks on. Default master.
+    required: false
+    default: master
   dry-run:
     description: >-
       Whether or not to actually attempt to push changes back to the wiki
@@ -48,4 +53,5 @@ runs:
         INPUT_TOKEN: ${{ inputs.token }}
         INPUT_PATH: ${{ inputs.path }}
         INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        INPUT_BRANCH: ${{ inputs.branch }}
         INPUT_DRY_RUN: ${{ inputs.dry-run }}

@@ -20,7 +20,7 @@ git config --local user.name github-actions
 git config --local user.email github-actions@github.com
 git remote add origin "https://$GITHUB_ACTOR:$INPUT_TOKEN@$INPUT_REPOSITORY.wiki.git"
 git fetch origin
-git reset origin/master
+git reset origin/$INPUT_BRANCH
 
 # https://stackoverflow.com/a/2659808
 if git diff-index --quiet HEAD --; then
@@ -36,7 +36,7 @@ if [[ $INPUT_DRY_RUN == true ]]; then
 	git remote show origin
 	git show
 else
-	git push -u origin master
+	git push -u origin $INPUT_BRANCH
 fi
 
 rm -rf ./.git
