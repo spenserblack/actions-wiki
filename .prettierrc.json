@@ -1,4 +1,4 @@
 {
-  "maxLineLength": 88,
+  "printWidth": 88,
   "trailingComma": "all"
 }
