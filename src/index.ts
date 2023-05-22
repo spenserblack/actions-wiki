@@ -1,3 +1,3 @@
-import * as core from '@actions/core';
+import * as core from "@actions/core";
 
-core.info('Hello world!');
+core.info("Hello world!");
