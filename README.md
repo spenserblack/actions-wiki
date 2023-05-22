@@ -10,7 +10,7 @@
 
 </div>
 
-🌐 Works across repositories (with a [PAT]) \
+🌐 Works across repositories (with a [PAT][pat]) \
 📚 Pretty interface for Markdown docs \
 ⤴️ Lets you open PRs for wiki docs \
 💻 Supports `runs-on: windows-*`
@@ -55,13 +55,13 @@ that powers the GitHub wiki. If you don't, when we push to `your-repo.wiki.git`,
 your workflow will fail because the wiki doesn't exist.
 
 ⚠️ You'll need to remember to enable the `contents: write` permission! GitHub
-recently [changed the default permissions granted to jobs] for new repositories.
+recently [changed the default permissions granted to jobs][default-permissions-update] for new repositories.
 
 ### Publishing to a different repository
 
 If you're pushing to a wiki that's **not the current repository** you'll need to
-get a [GitHub PAT] to push to it. The default `${{ secrets.GITHUB_TOKEN }}`
-won't cut it! You can [generate a PAT] in your GitHub Settings.
+get a [GitHub PAT][pat] to push to it. The default `${{ secrets.GITHUB_TOKEN }}`
+won't cut it! You can [generate a PAT][generate-a-pat] in your GitHub Settings.
 
 For example, if you created octocat/gigantic-mega-project-wiki to hold the wiki
 and you want to publish it to the GitHub wiki that belongs to _another
@@ -103,41 +103,34 @@ one of your GitHub Actions workflows.
 
 ## Alternatives
 
-There are quite a few GitHub wiki publishing actions on the [GitHub Actions
-marketplace]. There are, however, two that stick out. The
-[newrelic/wiki-sync-action] is a good choice for if you need bidirectional
+There are quite a few GitHub wiki publishing actions on the [GitHub Actions marketplace][actions-marketplace]. There are, however, two that stick out. The
+[newrelic/wiki-sync-action][newrelic-action] is a good choice for if you need bidirectional
 synchronization when someone edits the live wiki. This can be beneficial for
-less-technical contributors. There's also [Andrew-Chen-Wang/github-wiki-action]
+less-technical contributors. There's also [Andrew-Chen-Wang/github-wiki-action][andrew-chen-wang-action]
 which is a direct competitor to this project. It offers more automatic features,
-but has more complex configuration. It also [doesn't support `runs-on:
-windows-*`].
+but has more complex configuration. It also [doesn't support `runs-on: windows-*`](https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28).
 
-📚 If you're interested in more discussion of alternatives, check out [#4].
+📚 If you're interested in more discussion of alternatives, check out [#4][issue-4].
 
 ## Development
 
 ![YAML](https://img.shields.io/static/v1?style=for-the-badge&message=YAML&color=CB171E&logo=YAML&logoColor=FFFFFF&label=)
 ![Bash](https://img.shields.io/static/v1?style=for-the-badge&message=Bash&color=4EAA25&logo=GNU+Bash&logoColor=FFFFFF&label=)
 
-This is a GitHub Action, so we inevitably use YAML[^1]. Make sure you quote the
+This is a GitHub Action, so we inevitably use [YAML][yaml-notes]. Make sure you quote the
 right things! To test 🧪 the action, the current workflow is to open a PR and
-then have the [`test.yml`] workflow run a `dry-run: true` iteration to
+then have the [`test.yml`](https://github.com/spenserblack/actions-wiki/blob/main/.github/workflows/test.yml) workflow run a `dry-run: true` iteration to
 (hopefully) spot any flaws.
 
 To get a better handle on the contribution process, check out our handy
-[contributing guide]. Happy coding! 👋
+[contributing guide][contributing]. Happy coding! 👋
 
-<!-- prettier-ignore-start -->
-[newrelic/wiki-sync-action]: https://github.com/newrelic/wiki-sync-action#readme
-[Andrew-Chen-Wang/github-wiki-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
-[#4]: https://github.com/spenserblack/actions-wiki/issues/4
-[PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-[GitHub PAT]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-[changed the default permissions granted to jobs]: https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
-[github actions marketplace]: https://github.com/marketplace?type=actions
-[generate a pat]: https://github.com/settings/tokens?type=beta
-[doesn't support `runs-on: windows-*`]: https://github.com/Andrew-Chen-Wang/github-wiki-action/discussions/28
-[contributing guide]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
-[`test.yml`]: https://github.com/spenserblack/actions-wiki/blob/main/.github/workflows/test.yml
-[^1]: https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/
-<!-- prettier-ignore-end -->
+[newrelic-action]: https://github.com/newrelic/wiki-sync-action#readme
+[andrew-chen-wang-action]: https://github.com/Andrew-Chen-Wang/github-wiki-action#readme
+[issue-4]: https://github.com/spenserblack/actions-wiki/issues/4
+[pat]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+[default-permissions-update]: https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
+[actions-marketplace]: https://github.com/marketplace?type=actions
+[generate-a-pat]: https://github.com/settings/tokens?type=beta
+[contributing]: https://github.com/spenserblack/actions-wiki/blob/main/CONTRIBUTING.md
+[yaml-notes]: https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/
