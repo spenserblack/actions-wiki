@@ -1,5 +1,2 @@
-action.yml linguist-detectable
-
-# This makes the newlines behave correctly in weird situations like running a
-# Windows-mounted CRLF file from within a WSL shell that expects LF.
-*.sh eol=lf
+dist/* binary
+tsconfig.json linguist-language=JSON-With-Comments
