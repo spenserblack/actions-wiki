@@ -1,6 +1,6 @@
 {
   "name": "Node.js",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
   "features": {
     "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
   },
