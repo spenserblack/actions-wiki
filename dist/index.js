@@ -31,7 +31,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(733));
-core.info('Hello world!');
+core.info("Hello world!");
 
 
 /***/ }),
