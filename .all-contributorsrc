@@ -26,6 +26,15 @@
         "ideas",
         "code"
       ]
+    },
+    {
+      "login": "yo-ga",
+      "name": "Yoga Yu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9553773?v=4",
+      "profile": "https://github.com/yo-ga",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
