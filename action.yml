@@ -4,14 +4,29 @@ branding:
   icon: book
   color: blue
 inputs:
+  strategy:
+    description: >-
+      Select from 'clone' or 'init' to determine which method to use to push
+      changes to the GitHub wiki. 'clone' will clone the .wiki.git repo and add
+      an additional commit. 'init' will create a new repo with a single commit
+      and force push to the .wiki.git. 'init' involves a force-push! The default
+      is 'clone'.
+    required: true
+    default: clone
   repository:
     description: >-
       The repository housing the wiki. Use this if you're publishing to a wiki
-      that's not the current repository. You can include a domain prefix if you
-      have a hosted GitHub instance that you want to push to. Default is
-      github.repository with the implicit github.com domain.
+      that's not the current repository. You can change the GitHub server with
+      the github-server-url input. Default is github.repository.
     required: true
-    default: github.com/${{ github.repository }}
+    default: ${{ github.repository }}
+  github-server-url:
+    description: >-
+      An alternate https://github.com URL, usually for GitHub Enterprise
+      deployments under your own domain. Default is github.server_url (usually
+      https://github.com).
+    required: true
+    default: ${{ github.server_url }}
   token:
     description: >-
       github.token is the default. This token is used when cloning and pushing
@@ -20,16 +35,23 @@ inputs:
     default: ${{ github.token }}
   path:
     description: >-
-      The directory to use for your wiki contents. Default .github/wiki.
+      The directory to use for your wiki contents. Default wiki.
     required: true
-    default: .github/wiki
+    default: wiki
   commit-message:
     description: >-
-      The message to use when committing new content. Default is Update wiki
-      github.sha. You probably don't need to change this, since this only
+      The message to use when committing new content. Default is 'Update wiki
+      github.sha'. You probably don't need to change this, since this only
       applies if you look really closely in your wiki.
     required: true
     default: Update wiki ${{ github.sha }}
+  ignore:
+    description: >-
+      A multiline list of files that should be ignored when committing and
+      pushing to the remote wiki. Each line is a pattern like .gitignore. Make
+      sure these paths are relative to the path option! The default is none.
+    required: true
+    default: ""
   dry-run:
     description: >-
       Whether or not to actually attempt to push changes back to the wiki
@@ -40,12 +62,14 @@ inputs:
 runs:
   using: composite
   steps:
-    - id: index
-      run: '"${GITHUB_ACTION_PATH%/}/src/index.sh"'
+    - run: '"${GITHUB_ACTION_PATH%/}/src/$INPUT_STRATEGY.sh"'
       shell: bash
       env:
+        INPUT_STRATEGY: ${{ inputs.strategy }}
         INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_GITHUB_SERVER_URL: ${{ inputs.github-server-url }}
         INPUT_TOKEN: ${{ inputs.token }}
         INPUT_PATH: ${{ inputs.path }}
         INPUT_COMMIT_MESSAGE: ${{ inputs.commit-message }}
+        INPUT_IGNORE: ${{ inputs.ignore }}
         INPUT_DRY_RUN: ${{ inputs.dry-run }}

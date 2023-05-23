@@ -1,36 +1,46 @@
 name: Test
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
-      - 'src/**'
-      -  action.yml
-      -  '.github/wiki/**'
-      - '.github/workflows/test.yml'
+      - src/**
+      - action.yml
+      - wiki/**
+      - .github/workflows/test.yml
   pull_request:
-    branches: [main]
+    branches: [master]
     paths:
-      - 'src/**'
-      -  action.yml
-      -  '.github/wiki/**'
-      - '.github/workflows/test.yml'
-# We don't want cancel-in-progress because we want each test (if there are
-# multiple at a given time) to still attempt to push to the wiki. This should
-# not cause any hiccups on the wiki since any and all tests are publishing in
-# the same content.
-concurrency: test
+      - src/**
+      - action.yml
+      - wiki/**
+      - .github/workflows/test.yml
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
   test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: ./:clone
+        uses: ./
+        with:
+          strategy: clone
+          dry-run: true
+      - name: ./:init
+        uses: ./
+        with:
+          strategy: init
+          dry-run: true
+  test-master:
+    if: github.ref_name == 'master'
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Write Rev
-        run: 'git log -1 --format="%H" > .github/wiki/Rev.md'
       - uses: ./
-        with:
-          # For now, you'll need to manually specify a GitHub token until we
-          # solve #2. The x: prefix is a dummy username.
-          token: x:${{ secrets.GITHUB_TOKEN }}
-          dry-run: ${{ github.ref != 'main' }}
