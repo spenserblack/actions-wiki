@@ -90,7 +90,8 @@ is specific to GitHub wikis.
 - **`token`:** `${{ github.token }}` is the default. This token is used when
   cloning and pushing wiki changes.
 
-- **`path`:** The directory to use for your wiki contents. Default `wiki/`.
+- **`path`:** The directory to use for your wiki contents. Default
+  `.github/wiki/`.
 
 - **`commit-message`:** The message to use when committing new content. Default
   is `Update wiki ${{ github.sha }}`. You probably don't need to change this,

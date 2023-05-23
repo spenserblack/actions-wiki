@@ -35,9 +35,9 @@ inputs:
     default: ${{ github.token }}
   path:
     description: >-
-      The directory to use for your wiki contents. Default wiki.
+      The directory to use for your wiki contents. Default .github/wiki.
     required: true
-    default: wiki
+    default: .github/wiki
   commit-message:
     description: >-
       The message to use when committing new content. Default is 'Update wiki
