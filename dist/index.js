@@ -90,41 +90,41 @@ function run() {
         const user = process.env["GITHUB_ACTOR"] || "github-actions[bot]";
         const wikiRemote = `https://${user}:${token}@${repository}.wiki.git`;
         if (!(yield (0, has_wiki_1.hasWiki)(wikiRemote))) {
-            core.notice('You must enable the wiki and add an initial page.');
+            core.notice("You must enable the wiki and add an initial page.");
             core.setFailed("Wiki repository not found");
             return;
         }
         const cwd = path;
         const baseOptions = { cwd };
-        yield (0, exec_1.exec)("git", ['init'], baseOptions);
-        yield (0, exec_1.exec)('git', ['config', '--local', 'user.name', 'github-actions[bot]'], baseOptions);
-        yield (0, exec_1.exec)('git', ['config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], baseOptions);
-        yield (0, exec_1.exec)('git', ['remote', 'add', 'wiki', wikiRemote], baseOptions);
-        yield (0, exec_1.exec)('git', ['fetch', 'wiki'], baseOptions);
-        yield (0, exec_1.exec)('git', ['reset', 'wiki/master'], baseOptions);
+        yield (0, exec_1.exec)("git", ["init"], baseOptions);
+        yield (0, exec_1.exec)("git", ["config", "--local", "user.name", "github-actions[bot]"], baseOptions);
+        yield (0, exec_1.exec)("git", ["config", "--local", "user.email", "github-actions[bot]@users.noreply.github.com"], baseOptions);
+        yield (0, exec_1.exec)("git", ["remote", "add", "wiki", wikiRemote], baseOptions);
+        yield (0, exec_1.exec)("git", ["fetch", "wiki"], baseOptions);
+        yield (0, exec_1.exec)("git", ["reset", "wiki/master"], baseOptions);
         if (!(yield (0, is_dirty_1.isDirty)(cwd))) {
-            core.info('No changes detected. Will not commit or push.');
+            core.info("No changes detected. Will not commit or push.");
             return;
         }
-        yield (0, exec_1.exec)('git', ['add', '--all'], baseOptions);
-        yield (0, exec_1.exec)('git', ['commit', '-m', commitMessage], baseOptions);
+        yield (0, exec_1.exec)("git", ["add", "--all"], baseOptions);
+        yield (0, exec_1.exec)("git", ["commit", "-m", commitMessage], baseOptions);
         if (dryRun) {
-            yield (0, exec_1.exec)('git', ['remote', 'show', 'wiki'], Object.assign(Object.assign({}, baseOptions), { listeners: {
+            yield (0, exec_1.exec)("git", ["remote", "show", "wiki"], Object.assign(Object.assign({}, baseOptions), { listeners: {
                     stdout: (data) => {
                         core.info(data.toString());
                     },
                 } }));
-            yield (0, exec_1.exec)('git', ['show'], Object.assign(Object.assign({}, baseOptions), { listeners: {
+            yield (0, exec_1.exec)("git", ["show"], Object.assign(Object.assign({}, baseOptions), { listeners: {
                     stdout: (data) => {
                         core.info(data.toString());
                     },
                 } }));
-            core.info('Dry run enabled. Will not push.');
+            core.info("Dry run enabled. Will not push.");
             return;
         }
-        yield (0, exec_1.exec)('git', ['push', 'wiki', 'HEAD:master'], baseOptions);
+        yield (0, exec_1.exec)("git", ["push", "wiki", "HEAD:master"], baseOptions);
         // NOTE: Cleanup
-        yield (0, exec_1.exec)('rm', ['-rf', '.git'], baseOptions);
+        yield (0, exec_1.exec)("rm", ["-rf", ".git"], baseOptions);
     });
 }
 run().catch((error) => {

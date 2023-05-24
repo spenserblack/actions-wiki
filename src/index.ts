@@ -14,30 +14,38 @@ async function run() {
   const user = process.env["GITHUB_ACTOR"] || "github-actions[bot]";
   const wikiRemote = `https://${user}:${token}@${repository}.wiki.git`;
   if (!(await hasWiki(wikiRemote))) {
-    core.notice('You must enable the wiki and add an initial page.');
+    core.notice("You must enable the wiki and add an initial page.");
     core.setFailed("Wiki repository not found");
     return;
   }
 
   const cwd = path;
   const baseOptions = { cwd };
-  await exec("git", ['init'], baseOptions);
-  await exec('git', ['config', '--local', 'user.name', 'github-actions[bot]'], baseOptions);
-  await exec('git', ['config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], baseOptions);
-  await exec('git', ['remote', 'add', 'wiki', wikiRemote], baseOptions);
-  await exec('git', ['fetch', 'wiki'], baseOptions);
-  await exec('git', ['reset', 'wiki/master'], baseOptions);
+  await exec("git", ["init"], baseOptions);
+  await exec(
+    "git",
+    ["config", "--local", "user.name", "github-actions[bot]"],
+    baseOptions,
+  );
+  await exec(
+    "git",
+    ["config", "--local", "user.email", "github-actions[bot]@users.noreply.github.com"],
+    baseOptions,
+  );
+  await exec("git", ["remote", "add", "wiki", wikiRemote], baseOptions);
+  await exec("git", ["fetch", "wiki"], baseOptions);
+  await exec("git", ["reset", "wiki/master"], baseOptions);
 
   if (!(await isDirty(cwd))) {
-    core.info('No changes detected. Will not commit or push.');
+    core.info("No changes detected. Will not commit or push.");
     return;
   }
 
-  await exec('git', ['add', '--all'], baseOptions);
-  await exec('git', ['commit', '-m', commitMessage], baseOptions);
+  await exec("git", ["add", "--all"], baseOptions);
+  await exec("git", ["commit", "-m", commitMessage], baseOptions);
 
   if (dryRun) {
-    await exec('git', ['remote', 'show', 'wiki'], {
+    await exec("git", ["remote", "show", "wiki"], {
       ...baseOptions,
       listeners: {
         stdout: (data: Buffer) => {
@@ -45,7 +53,7 @@ async function run() {
         },
       },
     });
-    await exec('git', ['show'], {
+    await exec("git", ["show"], {
       ...baseOptions,
       listeners: {
         stdout: (data: Buffer) => {
@@ -53,14 +61,14 @@ async function run() {
         },
       },
     });
-    core.info('Dry run enabled. Will not push.');
+    core.info("Dry run enabled. Will not push.");
     return;
   }
 
-  await exec('git', ['push', 'wiki', 'HEAD:master'], baseOptions);
+  await exec("git", ["push", "wiki", "HEAD:master"], baseOptions);
 
   // NOTE: Cleanup
-  await exec('rm', ['-rf', '.git'], baseOptions);
+  await exec("rm", ["-rf", ".git"], baseOptions);
 }
 
 run().catch((error) => {
