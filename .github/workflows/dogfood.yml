@@ -1,19 +1,19 @@
-name: Test
+name: Dogfood Test
 on:
   push:
     branches: [main]
     paths:
-      - 'src/**'
-      -  action.yml
-      -  '.github/wiki/**'
-      - '.github/workflows/test.yml'
+      - "src/**"
+      - action.yml
+      - ".github/wiki/**"
+      - ".github/workflows/test.yml"
   pull_request:
     branches: [main]
     paths:
-      - 'src/**'
-      -  action.yml
-      -  '.github/wiki/**'
-      - '.github/workflows/test.yml'
+      - "src/**"
+      - action.yml
+      - ".github/wiki/**"
+      - ".github/workflows/test.yml"
 # We don't want cancel-in-progress because we want each test (if there are
 # multiple at a given time) to still attempt to push to the wiki. This should
 # not cause any hiccups on the wiki since any and all tests are publishing in
@@ -30,7 +30,5 @@ jobs:
         run: 'git log -1 --format="%H" > .github/wiki/Rev.md'
       - uses: ./
         with:
-          # For now, you'll need to manually specify a GitHub token until we
-          # solve #2. The x: prefix is a dummy username.
-          token: x:${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           dry-run: ${{ github.ref != 'main' }}
