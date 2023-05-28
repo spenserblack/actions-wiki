@@ -1,6 +1,9 @@
 # Publish to GitHub wiki action
 
-[![Test](https://github.com/spenserblack/actions-wiki/actions/workflows/test.yml/badge.svg)](https://github.com/spenserblack/actions-wiki/actions/workflows/test.yml)
+[![CI](https://github.com/spenserblack/actions-wiki/actions/workflows/ci.yml/badge.svg)](https://github.com/spenserblack/actions-wiki/actions/workflows/ci.yml)
+[![Dogfood Test](https://github.com/spenserblack/actions-wiki/actions/workflows/dogfood.yml/badge.svg)](https://github.com/spenserblack/actions-wiki/actions/workflows/dogfood.yml)
+[![Check dist/](https://github.com/spenserblack/actions-wiki/actions/workflows/check-dist.yml/badge.svg)](https://github.com/spenserblack/actions-wiki/actions/workflows/check-dist.yml)
+[![codecov](https://codecov.io/gh/spenserblack/actions-wiki/branch/main/graph/badge.svg?token=UhUknoRBkx)](https://codecov.io/gh/spenserblack/actions-wiki)
 
 📖 Deploy docs from your source tree to the GitHub wiki
 
