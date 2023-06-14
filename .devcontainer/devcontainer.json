@@ -9,7 +9,11 @@
       "openFiles": ["README.md", "CONTRIBUTING.md"]
     },
     "vscode": {
-      "extensions": ["EditorConfig.EditorConfig"]
+      "extensions": ["EditorConfig.EditorConfig", "esbenp.prettier-vscode"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "prettier.prettierPath": "./node_modules/prettier"
+      }
     }
   },
   "postCreateCommand": ".devcontainer/postCreate.sh",

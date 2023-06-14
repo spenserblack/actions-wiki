@@ -1,2 +1,3 @@
 dist/* binary
 tsconfig.json linguist-language=JSON-With-Comments
+.vscode/*.json linguist-language=JSON-With-Comments
