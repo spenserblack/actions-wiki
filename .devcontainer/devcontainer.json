@@ -2,7 +2,9 @@
   "name": "Node.js",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {
+      "version": "8.6.1"
+    }
   },
   "customizations": {
     "codespaces": {
